@@ -1,0 +1,14 @@
+! Xft settings ------
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+! Xft.autohint: 0
+
+! xterm settings -----
+xterm*faceName: Monaco
+xterm*faceSize: 10
+xterm*metaSendsEscape: true
+! Wierd reason for emacs terminals not to work
