@@ -18,7 +18,7 @@
 (flyspell-mode -1)
 (load-library "alpha")
 (set-frame-parameter (selected-frame) 'alpha '(80 50))
-(add-to-list 'default-frame-alist ')
+;;(add-to-list 'default-frame-alist ')
 (add-to-list
  'default-frame-alist '((alpha 85 50)
                         (font . "-unknown-Monaco-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")))
