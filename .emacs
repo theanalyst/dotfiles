@@ -22,8 +22,9 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ))
 (package-initialize)
-(flyspell-mode -1)
+;;(flyspell-mode -1)
 
+(setq-default ispell-program-name "hunspell")
 (setq user-fullname "Abhishek L")
 (setq user-email-address "abhishekl.2006@gmail.com")
 
