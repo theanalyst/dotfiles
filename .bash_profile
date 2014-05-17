@@ -1,9 +1,10 @@
-
 if [ -f ~/.bashrc ]; then
          . ~/.bashrc
 fi
 
-export PATH=$PATH:$HOME/bin:$HOME/.gem/ruby/1.9.1/bin:/usr/local/heroku/bin
-export BASH_ENV=$HOME/.bashrc
+D=$'\e[0;37m'
+PINK=$'\e[0;35m'
+GREEN=$'\e[0;32m'
+ORANGE=$'\e[0;33m'
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PS1='${PINK}\u${D}@${ORANGE}\h ${GREEN}[\w]$ ${D}'
