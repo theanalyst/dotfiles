@@ -3,8 +3,9 @@ if [ -f ~/.bashrc ]; then
 fi
 
 D=$'\e[0;37m'
-PINK=$'\e[0;35m'
+VIOLET=$'\e[0;35m'
 GREEN=$'\e[0;32m'
 ORANGE=$'\e[0;33m'
+RED=$'\e[0;31m'
 
-export PS1='${PINK}\u${D}@${ORANGE}\h ${GREEN}[\w]$ ${D}'
+export PS1='[${RED}\u${D}@${RED}\h:${GREEN}\w${D}]${VIOLET}$(__git_ps1 "(⎇ %s)")${GREEN}\$ ${D}'
