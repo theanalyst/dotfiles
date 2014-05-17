@@ -1,14 +1,25 @@
-! Xft settings ------
-Xft.dpi: 96
-Xft.antialias: true
-Xft.rgba: rgb
-Xft.hinting: true
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
-! Xft.autohint: 0
-
-! xterm settings -----
-xterm*faceName: Monaco
-xterm*faceSize: 10
-xterm*metaSendsEscape: true
-! Wierd reason for emacs terminals not to work
+URxvt.depth: 32
+URxvt.background: rgba:3f00/3f00/3f00/dddd
+URxvt.foreground: #d0d0d0
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
+URxvt.scrollBar: false
+URxvt.font: xft:CosmicSansNeueMono:size=11
+URxvt.letterSpacing: -1
+URxvt.shading: 75
+URxvt.fading: 5%
+URxvt.transparency: false
