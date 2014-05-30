@@ -1,0 +1,27 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# get started fast.
+
+[general]
+accounts = Gmail
+maxsyncaccounts = 2
+pythonfile = ~/.offlineimap.py
+
+[Account Gmail]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/Maildir
+
+[Repository Remote]
+type = IMAP
+remoteuser = abhishek.lekshmanan@gmail.com
+remotepasseval = get_pass_emacs("imap.gmail.com", "993")
+#remotepasseval = keyring.get_password("offlineimap","abhishek.lekshmanan@gmail.com")
+realdelete = no
+remotehost = imap.gmail.com
+holdconnectionopen = true
+keepalive = 60
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+ssl = yes
