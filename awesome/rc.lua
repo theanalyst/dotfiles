@@ -240,8 +240,8 @@ globalkeys = awful.util.table.join(
         end),
     -- Screen Lock
     awful.key({ modkey, }, "l", function () awful.util.spawn("xtrlock") end),
-
-    -- Standard program
+    awful.key({} , "Print", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+      -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
