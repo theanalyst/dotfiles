@@ -393,4 +393,5 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 awful.util.spawn_with_shell("run_once nm-applet")
 awful.util.spawn_with_shell("run_once redshift-gtk")
 awful.util.spawn_with_shell("run_once emacs --daemon")
+awful.util.spawn_with_shell("xcompmgr")
 -- }}}
