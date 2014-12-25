@@ -18,7 +18,7 @@ URxvt*color13: #bb88dd
 URxvt*color14: #4eb4fa
 URxvt*color15: #d0d0d0
 URxvt.scrollBar: false
-URxvt.font: xft:CosmicSansNeueMono:size=11
+URxvt.font: xft:Fantasque Sans Mono:size=11
 URxvt.letterSpacing: -1
 URxvt.shading: 75
 URxvt.fading: 5%
