@@ -8,4 +8,9 @@ GREEN=$'\e[0;32m'
 ORANGE=$'\e[0;33m'
 RED=$'\e[0;31m'
 
-export PS1='[${RED}\u${D}@${RED}\h:${GREEN}\w${D}]${VIOLET}$(__git_ps1 "(⎇ %s)")${GREEN}\$ ${D}'
+export PS1='[${RED}\u${D}@${RED}\h:${GREEN}\w${D}]${VIOLET}$(__git_ps1 "(⎇ %s)")${GREEN}\$ ${D}\n'
+export EDITOR="emacsclient -c"
+
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
