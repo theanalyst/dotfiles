@@ -49,8 +49,6 @@ end
 
 run_once("urxvtd")
 run_once("unclutter")
-run_once("xcompmgr")
-run_once("xbacklight -set 30%")
 -- }}}
 
 -- {{{ Variable definitions
@@ -532,26 +530,26 @@ globalkeys = awful.util.table.join(
         end),
 
     -- MPD control
-    -- awful.key({ altkey, "Control" }, "Up",
-    --     function ()
-    --         awful.util.spawn_with_shell("mpc toggle || ncmpcpp toggle || ncmpc toggle || pms toggle")
-    --         mpdwidget.update()
-    --     end),
-    -- awful.key({ altkey, "Control" }, "Down",
-    --     function ()
-    --         awful.util.spawn_with_shell("mpc stop || ncmpcpp stop || ncmpc stop || pms stop")
-    --         mpdwidget.update()
-    --     end),
-    -- awful.key({ altkey, "Control" }, "Left",
-    --     function ()
-    --         awful.util.spawn_with_shell("mpc prev || ncmpcpp prev || ncmpc prev || pms prev")
-    --         mpdwidget.update()
-    --     end),
-    -- awful.key({ altkey, "Control" }, "Right",
-    --     function ()
-    --         awful.util.spawn_with_shell("mpc next || ncmpcpp next || ncmpc next || pms next")
-    --         mpdwidget.update()
-    --     end),
+    awful.key({ altkey, "Control" }, "Up",
+        function ()
+            awful.util.spawn_with_shell("mpc toggle || ncmpcpp toggle || ncmpc toggle || pms toggle")
+            mpdwidget.update()
+        end),
+    awful.key({ altkey, "Control" }, "Down",
+        function ()
+            awful.util.spawn_with_shell("mpc stop || ncmpcpp stop || ncmpc stop || pms stop")
+            mpdwidget.update()
+        end),
+    awful.key({ altkey, "Control" }, "Left",
+        function ()
+            awful.util.spawn_with_shell("mpc prev || ncmpcpp prev || ncmpc prev || pms prev")
+            mpdwidget.update()
+        end),
+    awful.key({ altkey, "Control" }, "Right",
+        function ()
+            awful.util.spawn_with_shell("mpc next || ncmpcpp next || ncmpc next || pms next")
+            mpdwidget.update()
+        end),
 
     -- Copy to clipboard
     awful.key({ modkey }, "c", function () os.execute("xsel -p -o | xsel -i -b") end),

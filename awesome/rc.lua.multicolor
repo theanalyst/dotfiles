@@ -16,6 +16,7 @@ local naughty   = require("naughty")
 local drop      = require("scratchdrop")
 local lain      = require("lain")
 -- }}}
+
 -- {{{ Error handling
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
@@ -49,8 +50,6 @@ end
 
 run_once("urxvtd")
 run_once("unclutter")
-run_once("xcompmgr")
-run_once("xbacklight -set 30%")
 -- }}}
 
 -- {{{ Variable definitions
@@ -90,8 +89,8 @@ local layouts = {
 
 -- {{{ Tags
 tags = {
-   names = { "term" ,"web", "emacs", "irc", "virt", "mail", "other" },
-   layout = { layouts[5] ,layouts[1], layouts[3], layouts[4], layouts[1], layouts[7], layouts[1] }
+   names = { "web", "term", "docs", "media", "files", "other" },
+   layout = { layouts[1], layouts[3], layouts[4], layouts[1], layouts[7], layouts[1] }
 }
 for s = 1, screen.count() do
 -- Each screen has its own tag table.
@@ -137,22 +136,6 @@ fswidget = lain.widgets.fs({
     end
 })
 
--- redshift
-icons_dir = require("lain.helpers").icons_dir
-local rs_on = icons_dir .. "/redshift/redshift_on.png"
-local rs_off = icons_dir .. "/redshift/redshift_off.png"
-local redshift = lain.widgets.contrib.redshift
-myredshift = wibox.widget.imagebox(rs_on)
-redshift:attach(
-    myredshift,
-    function ()
-        if redshift:is_active() then
-            myredshift:set_image(rs_on)
-        else
-            myredshift:set_image(rs_off)
-        end 
-    end 
-)
 --[[ Mail IMAP check
 -- commented because it needs to be set before use
 mailicon = wibox.widget.imagebox()
@@ -239,8 +222,7 @@ memwidget = lain.widgets.mem({
 -- MPD
 mpdicon = wibox.widget.imagebox()
 mpdwidget = lain.widgets.mpd({
-      password = "pass",
-      settings = function()
+    settings = function()
         mpd_notification_preset = {
             text = string.format("%s [%s] - %s\n%s", mpd_now.artist,
                    mpd_now.album, mpd_now.date, mpd_now.title)
@@ -354,13 +336,12 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     --right_layout:add(mailicon)
     --right_layout:add(mailwidget)
-    right_layout:add(myredshift)
     right_layout:add(netdownicon)
     right_layout:add(netdowninfo)
     right_layout:add(netupicon)
     right_layout:add(netupinfo)
     right_layout:add(volicon)
-    -- right_layout:add(volumewidget)
+    right_layout:add(volumewidget)
     right_layout:add(memicon)
     right_layout:add(memwidget)
     right_layout:add(cpuicon)
@@ -416,8 +397,8 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     -- Take a screenshot
     -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
-    awful.key({ modkey }, "print", function() os.execute("screenshot") end),
-    awful.key({ modkey }, "l", function() awful.util.spawn("xtrlock") end),
+    awful.key({ altkey }, "p", function() os.execute("screenshot") end),
+
     -- Tag browsing
     awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
@@ -507,7 +488,7 @@ globalkeys = awful.util.table.join(
     -- Widgets popups
     awful.key({ altkey,           }, "c",      function () lain.widgets.calendar:show(7) end),
     awful.key({ altkey,           }, "h",      function () fswidget.show(7) end),
-    awful.key({ modkey,           }, "p",      function () yawn.show(7) end),
+    awful.key({ altkey,           }, "w",      function () yawn.show(7) end),
 
     -- ALSA volume control
     awful.key({ altkey }, "Up",
@@ -532,26 +513,26 @@ globalkeys = awful.util.table.join(
         end),
 
     -- MPD control
-    -- awful.key({ altkey, "Control" }, "Up",
-    --     function ()
-    --         awful.util.spawn_with_shell("mpc toggle || ncmpcpp toggle || ncmpc toggle || pms toggle")
-    --         mpdwidget.update()
-    --     end),
-    -- awful.key({ altkey, "Control" }, "Down",
-    --     function ()
-    --         awful.util.spawn_with_shell("mpc stop || ncmpcpp stop || ncmpc stop || pms stop")
-    --         mpdwidget.update()
-    --     end),
-    -- awful.key({ altkey, "Control" }, "Left",
-    --     function ()
-    --         awful.util.spawn_with_shell("mpc prev || ncmpcpp prev || ncmpc prev || pms prev")
-    --         mpdwidget.update()
-    --     end),
-    -- awful.key({ altkey, "Control" }, "Right",
-    --     function ()
-    --         awful.util.spawn_with_shell("mpc next || ncmpcpp next || ncmpc next || pms next")
-    --         mpdwidget.update()
-    --     end),
+    awful.key({ altkey, "Control" }, "Up",
+        function ()
+            awful.util.spawn_with_shell("mpc toggle || ncmpcpp toggle || ncmpc toggle || pms toggle")
+            mpdwidget.update()
+        end),
+    awful.key({ altkey, "Control" }, "Down",
+        function ()
+            awful.util.spawn_with_shell("mpc stop || ncmpcpp stop || ncmpc stop || pms stop")
+            mpdwidget.update()
+        end),
+    awful.key({ altkey, "Control" }, "Left",
+        function ()
+            awful.util.spawn_with_shell("mpc prev || ncmpcpp prev || ncmpc prev || pms prev")
+            mpdwidget.update()
+        end),
+    awful.key({ altkey, "Control" }, "Right",
+        function ()
+            awful.util.spawn_with_shell("mpc next || ncmpcpp next || ncmpc next || pms next")
+            mpdwidget.update()
+        end),
 
     -- Copy to clipboard
     awful.key({ modkey }, "c", function () os.execute("xsel -p -o | xsel -i -b") end),
@@ -767,5 +748,3 @@ for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
       end)
 end
 -- }}}
-
-awesome.font = "Tamsyn 10"
